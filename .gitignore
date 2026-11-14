@@ -1,0 +1,5 @@
+study-buddy.db
+study-buddy.db-journal
+study-buddy.db-shm
+study-buddy.db-wal
+node_modules/

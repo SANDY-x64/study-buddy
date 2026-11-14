@@ -1,10 +1,18 @@
 # Sandy Study Buddy
 
-A lightweight, static multi-subject study dashboard inspired by the Maths SEM-I checklist on your Desktop.
+A multi-subject JNTUH R25 study dashboard for MSF, SE, DBMS, COA, and OOPJ. It can run as a static GitHub Pages app or with an optional local Node.js server, SQLite database, and Ollama tutor.
 
 ## Open it
 
-Open `index.html` in a browser. Progress and custom sessions are saved in that browser on this device. Files attached from the app are stored in IndexedDB; the app does not upload them.
+### Static / GitHub Pages
+
+Open `index.html` or the published GitHub Pages site. Progress and custom sessions are saved in browser storage. Attached files are stored in that browser's IndexedDB.
+
+### Local database and AI tutor
+
+Install Node.js 22.5+ and Ollama. Pull the local model once with `ollama pull llama3.2:1b`, then start the app from this folder with `npm start` and open `http://127.0.0.1:3210`. The server creates `study-buddy.db` in this project folder; it stores app state locally and is excluded from Git. Start Ollama before asking the tutor questions. When the app is open on GitHub Pages, it can also use your local tutor if this server and Ollama are running on your computer. If the local service is unavailable, the built-in syllabus explanations remain available.
+
+The local server is for your own computer. SQLite and the local model are not hosted by GitHub Pages.
 
 ## Included sessions
 
