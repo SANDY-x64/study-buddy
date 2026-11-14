@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2"><meta name="description" content="Sandy Study Buddy — your JNTUH R25 multi-subject study dashboard.">
+  <title>Sandy Study Buddy · R25</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar"><a class="brand" href="#top"><span class="brand-icon">✳</span><span>SANDY<span class="brand-muted"> STUDY BUDDY</span></span></a><span class="term-tag"><i></i> JNTUH · R25 · II-I</span><button class="reset-button" id="resetBtn">Reset progress</button></header>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy"><p class="eyebrow">YOUR SEMESTER, IN FOCUS <span class="eyebrow-line"></span></p><h1>Five subjects.<br>One step at a time<span class="period">.</span></h1><p class="hero-sub">A calm study space for JNTUH R25.<br>Pick a subject, make progress, keep going.</p><button class="continue-btn" id="continueBtn">Continue studying <span>↗</span></button></div>
+        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-core">S</div><span class="math-float float-one">MSF</span><span class="math-float float-two">DBMS</span><span class="math-float float-three">COA</span><span class="math-float float-four">OOPJ</span><span class="spark spark-one">✳</span><span class="spark spark-two">+</span></div>
+        <div class="hero-counter"><strong id="heroPercent">0%</strong><span>ALL SUBJECTS<br>COMPLETE</span></div>
+      </section>
+      <section class="progress-card" aria-label="Overall study progress"><div class="progress-top"><div><p class="eyebrow">OVERALL PROGRESS</p><h2><span id="doneCount">0</span><span class="slash"> / </span><span id="totalCount">0</span> topics complete</h2></div><div class="progress-note"><span class="progress-dot"></span><span id="progressMessage">A fresh start. You’ve got this.</span></div></div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-bottom"><span>JUST STARTING</span><span>KEEP IT UP</span><span>ALMOST THERE</span><span>YOU DID IT</span></div></section>
+      <section class="study-area">
+        <div class="section-heading"><div><p class="eyebrow">YOUR STUDYSPACE</p><h2>Choose a subject</h2></div><button class="secondary-btn" id="addSubjectBtn">＋ Add subject</button></div>
+        <nav class="subject-tabs" id="subjectTabs" aria-label="Subjects"></nav>
+        <section class="subject-intro" id="subjectIntro"></section>
+        <nav class="view-tabs" aria-label="Study tools"><button class="view-tab active" data-view="roadmap">To-do roadmap</button><button class="view-tab" data-view="questions">2 &amp; 10 mark practice</button><button class="view-tab" data-view="papers">Question papers &amp; files</button></nav>
+        <div class="view-panel" id="viewPanel"></div>
+      </section>
+      <section class="closing-note"><span class="note-mark">✳</span><p>Small sessions add up. <strong>Come back to one topic at a time.</strong></p><span class="note-equation">learn · practise · repeat</span></section>
+      <section class="about-card"><span class="about-avatar">S</span><div class="about-copy"><p class="eyebrow">ABOUT THIS STUDY SPACE</p><h2>Made for <strong>SANDY</strong> · JNTUH R25</h2></div><a class="source-link" href="https://jntuh.ac.in/uploads/academics/R25B.Tech.CSE%28AIML%29IIIYearSyllabus.pdf" target="_blank" rel="noopener">Official R25 syllabus ↗</a></section>
+    </main><footer><span>MADE FOR YOUR NEXT BIG STEP</span><span>JNTUH R25 <b>·</b> CSE(AI&amp;ML) II YEAR I SEMESTER</span></footer>
+  </div>
+  <button class="chat-launcher" id="chatLauncher" aria-label="Open Study Buddy"><span class="chat-launcher-icon">✳</span><span class="chat-label">Ask Study Buddy</span><span class="chat-ping"></span></button>
+  <aside class="chat-panel" id="chatPanel" aria-label="Study Buddy" aria-hidden="true"><div class="chat-head"><div class="buddy-avatar">✳</div><div class="buddy-title"><strong>Study Buddy</strong><span><i></i> Your subject session</span></div><button class="chat-close" id="chatClose" aria-label="Close chat">×</button></div><div class="chat-context" id="chatContext">Choose a subject to begin.</div><div class="chat-messages" id="chatMessages" aria-live="polite"><div class="message bot-message">Hi Sandy! Pick a subject, then ask me to explain a topic or quiz you.</div><div class="quick-prompts"><button data-prompt="What should I study next?">What next?</button><button data-prompt="Give me a 2 mark question">2 mark quiz</button><button data-prompt="Give me a 10 mark question">10 mark practice</button></div></div><form class="chat-form" id="chatForm"><input id="chatInput" type="text" placeholder="Ask about a topic…" autocomplete="off" aria-label="Ask a study question"><button aria-label="Send message">↑</button></form><p class="chat-footnote">Built-in syllabus guide · progress saved in this browser</p></aside>
+  <dialog id="subjectDialog"><form method="dialog" id="subjectForm"><div class="dialog-head"><div><p class="eyebrow">MAKE A NEW SESSION</p><h2>Add a subject</h2></div><button class="icon-button" value="cancel" aria-label="Close">×</button></div><label>Subject name<input id="newSubjectName" required placeholder="e.g. Discrete Mathematics"></label><label>Course code (optional)<input id="newSubjectCode" placeholder="e.g. CS401PC"></label><label>Units (one unit title per line)<textarea id="newSubjectUnits" rows="5" placeholder="Unit I — Foundations&#10;Unit II — Core concepts"></textarea></label><p class="helper-text">This creates an independent checklist, questions area, and file session. Add individual topics from each unit afterwards.</p><div class="dialog-actions"><button class="secondary-btn" value="cancel">Cancel</button><button class="continue-btn" id="saveSubjectBtn" value="default">Create session ↗</button></div></form></dialog>
+  <input id="fileInput" type="file" multiple hidden>
+  <script src="materials.js"></script><script src="app.js"></script>
+</body>
+</html>
